@@ -127,6 +127,10 @@ class ServerDataSource(DataSource):
     # TODO: Find/create a property type for 'any primitive/atomic value'
     transform = Dict(String,Either(Instance(PlotObject), Any))
 
+class BlazeDataSource(DataSource):
+    data_url = String()
+    expr = Dict(String, Any())
+
 
 class PandasDataSource(DataSource):
     """ Represents serverside data.  This gets stored into the plot server's
@@ -288,7 +292,8 @@ class DatetimeTickFormatter(TickFormatter):
     formats = Dict(Enum(DatetimeUnits), List(String))
 
 class Glyph(Renderer):
-    server_data_source = Instance(ServerDataSource)
+    server_data_source = Either(Instance(ServerDataSource),
+                                (Instance(BlazeDataSource)))
     data_source = Instance(DataSource)
     x_range_name = String('default')
     y_range_name = String('default')

@@ -16,6 +16,9 @@ define [
       serversource = @mget('server_data_source')
       # hack, call set data, becuase there are some attrs that we need
       # that are in it
+      if serversource.type == 'BlazeDataSource'
+        serversource.update(@mget('data_source'))
+        return null
       data = _.extend({}, @mget('data_source').get('data'), serversource.get('data'))
       @mget('data_source').set('data', data)
       @set_data(false)

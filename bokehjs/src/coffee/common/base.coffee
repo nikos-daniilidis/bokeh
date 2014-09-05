@@ -34,6 +34,7 @@ define [
 
   "source/column_data_source",
   "source/server_data_source",
+  "source/blaze_data_source",
 
   "ticking/abstract_ticker",
   "ticking/adaptive_ticker",
@@ -149,6 +150,7 @@ define [
 
     ColumnDataSource:         'source/column_data_source'
     ServerDataSource:         'source/server_data_source'
+    BlazeDataSource:          'source/blaze_data_source'
 
     AbstractTicker:           'ticking/abstract_ticker'
     AdaptiveTicker:           'ticking/adaptive_ticker'

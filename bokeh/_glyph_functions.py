@@ -13,9 +13,10 @@ def _glyph_function(glyphclass, argnames, docstring, xfields=["x"], yfields=["y"
             _materialize_colors_and_alpha, _get_legend,
             _make_legend, _get_select_tool
         )
-        from .objects import ColumnDataSource, Glyph, Plot, ServerDataSource
+        from .objects import (ColumnDataSource, Glyph, Plot,
+                              ServerDataSource, BlazeDataSource)
         source = kwargs.pop('source', None)
-        if isinstance(source, ServerDataSource):
+        if isinstance(source, (ServerDataSource, BlazeDataSource)):
             datasource = ColumnDataSource()
             serversource = source
         elif source is None:
