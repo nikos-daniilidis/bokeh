@@ -520,6 +520,11 @@ class GMapOptions(HasProps):
 
 class GMapPlot(Plot):
     map_options = Instance(GMapOptions)
+    
+    def finalize(self, models):
+        props = super(GMapPlot, self).finalize(models)
+        props['map_options'] = GMapOptions(**props['map_options'])
+        return props
 
 class GeoJSOptions(HasProps):
     lat = Float
