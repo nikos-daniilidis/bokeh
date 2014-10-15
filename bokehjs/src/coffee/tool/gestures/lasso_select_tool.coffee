@@ -48,6 +48,7 @@ define [
 
     _pan_end: (e) ->
       @_clear_overlay()
+      append = e.srcEvent.shiftKey ? false
       @_select(@data.vx, @data.vy, append, true)
 
     _clear_overlay: () ->
