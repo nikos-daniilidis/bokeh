@@ -29,7 +29,8 @@ define [
       selector = @_get_selector(tool)
       selector.update(indices, geometry, final, append)
 
-      @_save(selector, selector.get('indices'))
+      if final
+        @_save(selector, selector.get('indices'))
       source.trigger('select')
       source.trigger('select-' + renderer_view.mget('id'))
 

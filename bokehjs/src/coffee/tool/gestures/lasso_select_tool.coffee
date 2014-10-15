@@ -44,15 +44,16 @@ define [
       overlay.set('data', new_data)
 
       append = e.srcEvent.shiftKey ? false
-      @_select(@data.vx, @data.vy, append)
+      @_select(@data.vx, @data.vy, append, false)
 
     _pan_end: (e) ->
       @_clear_overlay()
+      @_select(@data.vx, @data.vy, append, true)
 
     _clear_overlay: () ->
       @mget('overlay').set('data', null)
 
-    _select: (vx, vy, append) ->
+    _select: (vx, vy, append, final) ->
       geometry = {
         type: 'poly'
         vx: vx
@@ -62,7 +63,7 @@ define [
       for r in @mget('renderers')
         ds = r.get('data_source')
         sm = ds.get('selection_manager')
-        sm.select(@, @plot_view.renderers[r.id], geometry, true, append)
+        sm.select(@, @plot_view.renderers[r.id], geometry, final, append)
 
   class LassoSelectTool extends SelectTool.Model
     default_view: LassoSelectToolView
