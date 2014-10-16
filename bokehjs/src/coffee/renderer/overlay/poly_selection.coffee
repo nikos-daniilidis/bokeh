@@ -51,9 +51,9 @@ define [
     display_defaults: () ->
       return _.extend({}, super(), {
         fill_color: null
-        fill_alpha: 0.2
-        line_color: 'grey'
-        line_width: 2
+        fill_alpha: 0.3
+        line_color: 'yellow'
+        line_width: 3
         line_alpha: 0.8
         line_join: 'miter'
         line_cap: 'butt'
